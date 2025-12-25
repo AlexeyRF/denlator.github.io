@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькулятор планет</title>
     <style>
-        /* Основные стили (тёмная тема) остаются как в предыдущем коде */
-        /* Для краткости оставлю только ключевые изменения */
         :root {
             --bg-primary: #0d1117;
             --bg-secondary: #161b22;
@@ -291,7 +289,6 @@
                 <h2 class="section-title"><i class="fas fa-star"></i> Пресеты Солнечной системы</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 15px;">Выберите планету для автоматической загрузки параметров</p>
                 <div class="presets-grid" id="presets-container">
-                    <!-- Пресеты будут добавлены через JavaScript -->
                 </div>
             </div>
             
@@ -468,11 +465,11 @@
 
     <script>
         // ==================== КОНСТАНТЫ ====================
-        const G = 6.67430e-11;           // Гравитационная постоянная, Н·м²/кг²
-        const SUN_MASS = 1.989e30;       // Масса Солнца, кг
+        const G = 6.67430e-11;           
+        const SUN_MASS = 1.989e30;       
         const PI = Math.PI;
-        const AU = 1.496e11;             // Астрономическая единица, м
-        const DAY_SECONDS = 86400;       // Секунд в дне
+        const AU = 1.496e11;        
+        const DAY_SECONDS = 86400;       
         
         // ==================== УТИЛИТЫ ====================
         function getNumber(mantissaId, exponentId) {
@@ -523,34 +520,34 @@
         const planetPresets = [
             { name: "Меркурий", mass: 0.330, massExp: 24, radius: 2439.4, radiusExp: 0, 
               distance: 57.9, distanceExp: 9, velocity: 47.9, velocityExp: 0, period: 88.0, periodExp: 0,
-              class: "rocky", description: "Ближайшая к Солнцу, без атмосферы[citation:1][citation:5]" },
+              class: "rocky", description: "" },
             { name: "Венера", mass: 4.87, massExp: 24, radius: 6051.8, radiusExp: 0, 
               distance: 108.2, distanceExp: 9, velocity: 35.0, velocityExp: 0, period: 224.7, periodExp: 0,
-              class: "rocky", description: "Парниковый эффект, температура до 480°C[citation:1][citation:5]" },
+              class: "rocky", description: "" },
             { name: "Земля", mass: 5.972, massExp: 24, radius: 6371.0, radiusExp: 0, 
               distance: 149.6, distanceExp: 9, velocity: 29.8, velocityExp: 0, period: 365.2, periodExp: 0,
-              class: "earth", description: "Наш дом, единственная известная обитаемая планета[citation:1]" },
+              class: "earth", description: "" },
             { name: "Марс", mass: 0.642, massExp: 24, radius: 3389.5, radiusExp: 0, 
               distance: 227.9, distanceExp: 9, velocity: 24.1, velocityExp: 0, period: 687.0, periodExp: 0,
-              class: "rocky", description: "Красная планета, тонкая атмосфера[citation:1][citation:5]" },
+              class: "rocky", description: "" },
             { name: "Юпитер", mass: 1899, massExp: 24, radius: 69911, radiusExp: 0, 
               distance: 778.6, distanceExp: 9, velocity: 13.1, velocityExp: 0, period: 4331, periodExp: 0,
-              class: "gas-giant", description: "Крупнейшая планета, газовый гигант[citation:1][citation:3]" },
+              class: "gas-giant", description: "" },
             { name: "Сатурн", mass: 568, massExp: 24, radius: 58232, radiusExp: 0, 
               distance: 1433.5, distanceExp: 9, velocity: 9.7, velocityExp: 0, period: 10747, periodExp: 0,
-              class: "gas-giant", description: "Знаменитые кольца, газовый гигант[citation:1]" },
+              class: "gas-giant", description: "" },
             { name: "Уран", mass: 86.8, massExp: 24, radius: 25362, radiusExp: 0, 
               distance: 2872.5, distanceExp: 9, velocity: 6.8, velocityExp: 0, period: 30589, periodExp: 0,
-              class: "gas-giant", description: "Ледяной гигант, вращается на боку[citation:1]" },
+              class: "gas-giant", description: "" },
             { name: "Нептун", mass: 102, massExp: 24, radius: 24622, radiusExp: 0, 
               distance: 4495.1, distanceExp: 9, velocity: 5.4, velocityExp: 0, period: 59800, periodExp: 0,
-              class: "gas-giant", description: "Самый ветреный, ледяной гигант[citation:1]" },
+              class: "gas-giant", description: "" },
             { name: "Плутон", mass: 0.0125, massExp: 24, radius: 1188.3, radiusExp: 0, 
               distance: 5870.0, distanceExp: 9, velocity: 4.7, velocityExp: 0, period: 90588, periodExp: 0,
-              class: "rocky", description: "Карликовая планета, пояс Койпера[citation:1][citation:3]" },
+              class: "rocky", description: "" },
             { name: "Луна", mass: 0.073, massExp: 24, radius: 1737.4, radiusExp: 0, 
               distance: 0.384, distanceExp: 9, velocity: 1.0, velocityExp: 0, period: 27.3, periodExp: 0,
-              class: "rocky", description: "Естественный спутник Земли[citation:1]" }
+              class: "rocky", description: "" }
         ];
         
         function loadPresets() {
@@ -582,14 +579,11 @@
             document.getElementById('velocity-exponent-ext').value = planet.velocityExp;
             document.getElementById('period-mantissa-ext').value = planet.period;
             document.getElementById('period-exponent-ext').value = planet.periodExp;
-            
-            // Показать уведомление
-            
+                        
         }
         
         // ==================== РАСШИРЕННЫЙ РЕЖИМ ====================
         function calculateExtended() {
-            // Получение значений
             const planetName = document.getElementById('planet-name-ext').value.trim() || "Планета";
             const mass = getNumber('mass-mantissa-ext', 'mass-exponent-ext');
             const radiusKm = getNumber('radius-mantissa-ext', 'radius-exponent-ext');
@@ -597,55 +591,35 @@
             const velocity = getNumber('velocity-mantissa-ext', 'velocity-exponent-ext') * 1000; // в м/с
             const periodDays = getNumber('period-mantissa-ext', 'period-exponent-ext');
             
-            // Проверка обязательных полей
             if (isNaN(mass) || isNaN(radiusKm) || isNaN(distance)) {
                 showError('extended', 'Заполните хотя бы массу, радиус и расстояние до Солнца');
                 return;
             }
             
-            const radius = radiusKm * 1000; // в метры
+            const radius = radiusKm * 1000;
             
             // ОСНОВНЫЕ ВЫЧИСЛЕНИЯ
-            // 1. Ускорение свободного падения
             const g = G * mass / Math.pow(radius, 2);
-            
-            // 2. Первая космическая скорость
             const v1 = Math.sqrt(G * mass / radius);
-            
-            // 3. Вторая космическая скорость (параболическая)
             const v2 = Math.sqrt(2) * v1;
-            
-            // 4. Плотность
             const volume = (4/3) * PI * Math.pow(radius, 3);
             const density = mass / volume;
-            
-            // 5. Орбитальный период вокруг Солнца (по Кеплеру)
             const periodSeconds = 2 * PI * Math.sqrt(Math.pow(distance, 3) / (G * SUN_MASS));
             const periodDaysCalc = periodSeconds / DAY_SECONDS;
-            
-            // 6. Орбитальная скорость (по Кеплеру)
             const vOrbit = Math.sqrt(G * SUN_MASS / distance);
-            
-            // 7. Сила притяжения к Солнцу
             const FSun = G * mass * SUN_MASS / Math.pow(distance, 2);
-            
-            // 8. Угловая скорость вращения
             let angularVelocity = "—";
             if (!isNaN(velocity) && velocity > 0) {
                 angularVelocity = formatNumber(velocity / distance, 6) + " рад/с";
             }
-            
-            // 9. Эксцентриситет (приближённо)
             let eccentricity = "—";
             if (!isNaN(periodDays) && periodDays > 0 && !isNaN(velocity) && velocity > 0) {
-                // Упрощённая оценка
                 const circumference = 2 * PI * distance;
                 const estimatedPeriod = circumference / velocity;
                 eccentricity = Math.abs(periodDays - estimatedPeriod/DAY_SECONDS) / periodDays;
                 eccentricity = formatNumber(eccentricity, 4);
             }
             
-            // Отображение результатов
             const results = [
                 { label: "Ускорение свободного падения", value: g, unit: "м/с²", formula: "g = G·M/R²" },
                 { label: "Первая космическая скорость", value: v1, unit: "м/с", formula: "v₁ = √(G·M/R)" },
@@ -681,8 +655,6 @@
             });
             
             container.innerHTML = html;
-            
-            // Обновить заголовок
             const title = container.closest('.results-section').querySelector('.section-title');
             title.innerHTML = `<i class="fas fa-chart-line"></i> Результаты для "${planetName}"`;
         }
@@ -716,8 +688,6 @@
             }
             
             const radius = radiusKm * 1000;
-            
-            // Только 5 основных параметров как в исходном калькуляторе
             const g = G * mass / Math.pow(radius, 2);
             const v1 = Math.sqrt(G * mass / radius);
             const T = 2 * PI * Math.sqrt(Math.pow(distance, 3) / (G * SUN_MASS));
@@ -745,7 +715,7 @@
             document.getElementById('distance-exponent-lite').value = '11';
         }
         
-        // ==================== ИНВЕРСНЫЙ РАСЧЁТ ====================
+        // ==================== РАСЧЁТ ====================
         function calculateInverse() {
             const density = getNumber('density-mantissa', 'density-exponent');
             const mass = getNumber('inverse-mass-mantissa', 'inverse-mass-exponent');
@@ -755,12 +725,8 @@
             const semiMajor = getNumber('semi-major-mantissa', 'semi-major-exponent');
             
             const radius = isNaN(radiusKm) ? NaN : radiusKm * 1000;
-            
-            // Определяем, какой параметр нужно найти
             let result = '';
             let foundParam = '';
-            
-            // 1. Поиск плотности (ρ = M / V)
             if (isNaN(density) && !isNaN(mass) && !isNaN(radius)) {
                 const volume = (4/3) * PI * Math.pow(radius, 3);
                 const calculatedDensity = mass / volume;
@@ -768,21 +734,18 @@
                           `;
                 foundParam = 'плотность';
             }
-            // 2. Поиск массы из гравитации (M = g·R² / G)
             else if (isNaN(mass) && !isNaN(gravity) && !isNaN(radius)) {
                 const calculatedMass = gravity * Math.pow(radius, 2) / G;
                 result = `Масса планеты: <strong>${formatNumber(calculatedMass)} кг</strong><br>
                           `;
                 foundParam = 'масса';
             }
-            // 3. Поиск радиуса из массы и плотности (R = ∛(3M / 4πρ))
             else if (isNaN(radiusKm) && !isNaN(mass) && !isNaN(density)) {
                 const calculatedRadius = Math.pow(3 * mass / (4 * PI * density), 1/3);
                 result = `Радиус планеты: <strong>${formatNumber(calculatedRadius / 1000)} км</strong><br>
                           `;
                 foundParam = 'радиус';
             }
-            // 4. Поиск большой полуоси из периода (a = ∛(T²·G·M☉ / 4π²))
             else if (isNaN(semiMajor) && !isNaN(periodDays)) {
                 const periodSeconds = periodDays * DAY_SECONDS;
                 const calculatedSemiMajor = Math.pow(Math.pow(periodSeconds, 2) * G * SUN_MASS / (4 * Math.pow(PI, 2)), 1/3);
@@ -790,7 +753,6 @@
                           `;
                 foundParam = 'большую полуось орбиты';
             }
-            // 5. Поиск периода из большой полуоси (T = 2π√(a³ / G·M☉))
             else if (isNaN(periodDays) && !isNaN(semiMajor)) {
                 const calculatedPeriod = 2 * PI * Math.sqrt(Math.pow(semiMajor, 3) / (G * SUN_MASS));
                 result = `Орбитальный период: <strong>${formatNumber(calculatedPeriod / DAY_SECONDS)} дней</strong><br>
@@ -827,12 +789,8 @@
         // ==================== ИНИЦИАЛИЗАЦИЯ ====================
         document.addEventListener('DOMContentLoaded', function() {
             loadPresets();
-            loadEarthLite();
-            
-            // Загружаем Землю в расширенный режим по умолчанию
-            loadPreset(planetPresets[2]); // Земля
-            
-            // Обработчики Enter
+            loadEarthLite();      
+            loadPreset(planetPresets[2]);
             document.querySelectorAll('input').forEach(input => {
                 input.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
