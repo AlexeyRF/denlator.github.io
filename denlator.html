@@ -21,8 +21,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            background-color: #121212;
+            color: #e0e0e0;
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
@@ -30,50 +30,56 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: var(--bg-secondary);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
             background: linear-gradient(135deg, var(--bg-tertiary), #1a5fb4);
             padding: 30px;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
         }
-        h1 { font-size: 2.8em; margin-bottom: 10px; }
+        h1 { 
+            color: #64b5f6;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
         .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2em;
+            color: #90a4ae;
+            font-size: 1.1em;
             max-width: 800px;
             margin: 0 auto;
         }
         .mode-selector {
             display: flex;
-            background-color: var(--bg-tertiary);
-            border-bottom: 1px solid var(--border-color);
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
         .mode-btn {
-            flex: 1;
-            padding: 18px;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.1em;
-            font-weight: 600;
+            padding: 12px 24px;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            flex: 1;
             border-bottom: 3px solid transparent;
         }
         .mode-btn:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+            background-color: #3d3d3d;
+            transform: translateY(-2px);
         }
         .mode-btn.active {
-            color: var(--accent-blue);
-            border-bottom-color: var(--accent-blue);
-            background-color: rgba(88, 166, 255, 0.1);
+            background-color: #1565c0;
+            border-color: #64b5f6;
+            color: white;
         }
         .mode-content {
             padding: 30px;
@@ -81,21 +87,24 @@
         }
         .mode-content.active { display: block; }
         .input-section, .presets-section, .results-section {
-            background-color: var(--bg-tertiary);
+            background-color: #1e1e1e;
             border-radius: 10px;
             padding: 25px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
             margin-bottom: 25px;
-            border: 1px solid var(--border-color);
+        }
+        .input-section:hover, .presets-section:hover, .results-section:hover {
+            transform: translateY(-5px);
+            border-color: #444;
         }
         .section-title {
-            color: var(--accent-blue);
-            font-size: 1.4em;
+            color: #4fc3f7;
+            font-size: 1.5em;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
         }
-        .section-title i { font-size: 1.2em; }
         .presets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -104,10 +113,10 @@
         }
         .preset-btn {
             padding: 15px;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+            background-color: #2d2d2d;
+            border: 1px solid #444;
             border-radius: 8px;
-            color: var(--text-primary);
+            color: #e0e0e0;
             cursor: pointer;
             transition: all 0.2s;
             text-align: center;
@@ -115,7 +124,7 @@
         }
         .preset-btn:hover {
             background-color: rgba(88, 166, 255, 0.2);
-            border-color: var(--accent-blue);
+            border-color: #64b5f6;
             transform: translateY(-2px);
         }
         .preset-btn.earth { background-color: rgba(63, 185, 80, 0.1); }
@@ -133,37 +142,45 @@
             gap: 8px;
         }
         label {
-            color: var(--text-secondary);
+            color: #a5d6a7;
             font-size: 0.95em;
-            font-weight: 500;
+            font-weight: bold;
+            min-width: 80px;
         }
         .input-row {
             display: flex;
             align-items: center;
             gap: 10px;
+            background-color: #2d2d2d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
         }
         .input-row input {
             flex: 1;
-            padding: 12px 15px;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 1em;
+            padding: 8px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+            text-align: center;
         }
         .input-row input:focus {
             outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+            border-color: #64b5f6;
         }
-        .unit {
-            min-width: 60px;
-            color: var(--accent-orange);
-            font-weight: 500;
+        .times-ten {
+            color: #90a4ae;
+            margin: 0 5px;
         }
         .exp-input {
             width: 70px;
             text-align: center;
+        }
+        .unit {
+            color: #ffb74d;
+            font-size: 0.9em;
+            min-width: 60px;
         }
         .buttons {
             display: flex;
@@ -185,24 +202,23 @@
             gap: 10px;
         }
         .btn-primary {
-            background-color: var(--accent-blue);
+            background-color: #1976d2;
             color: white;
             flex: 2;
             min-width: 200px;
         }
         .btn-primary:hover {
-            background-color: #4a94e6;
+            background-color: #1565c0;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.4);
         }
         .btn-secondary {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            border: 1px solid #444;
             flex: 1;
         }
         .btn-secondary:hover {
-            background-color: var(--border-color);
+            background-color: #3d3d3d;
         }
         .btn-switch {
             background-color: var(--accent-green);
@@ -219,27 +235,24 @@
             margin-top: 20px;
         }
         .result-card {
-            background-color: var(--bg-primary);
+            background-color: #252525;
             padding: 20px;
             border-radius: 10px;
-            border-left: 5px solid var(--accent-purple);
+            border-left: 5px solid #1565c0;
         }
         .result-label {
-            color: var(--text-secondary);
-            font-size: 0.9em;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #bb86fc;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
         .result-value {
-            color: var(--text-primary);
+            color: #4fc3f7;
             font-size: 1.8em;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-weight: bold;
         }
         .result-unit {
-            color: var(--accent-orange);
+            color: #ffb74d;
             font-size: 0.9em;
             font-weight: 500;
         }
@@ -266,6 +279,8 @@
             .presets-grid { grid-template-columns: repeat(2, 1fr); }
             .buttons { flex-direction: column; }
             .btn { width: 100%; }
+            .mode-selector { flex-direction: column; }
+            .mode-btn { width: 100%; }
         }
     </style>
 </head>
@@ -277,7 +292,6 @@
             <button class="mode-btn active" onclick="switchMode('extended')">
                 <i class="fas fa-rocket"></i> Обычный режим
             </button>
-
             <button class="mode-btn" onclick="switchMode('inverse')">
                 <i class="fas fa-calculator"></i> Расчёт неизвестного
             </button>
@@ -286,9 +300,8 @@
         <div id="extended-mode" class="mode-content active">
             <div class="presets-section">
                 <h2 class="section-title"><i class="fas fa-star"></i> Пресеты Солнечной системы</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 15px;">Выберите планету для автоматической загрузки параметров</p>
-                <div class="presets-grid" id="presets-container">
-                </div>
+                <p style="color: #90a4ae; margin-bottom: 15px;">Выберите планету для автоматической загрузки параметров</p>
+                <div class="presets-grid" id="presets-container"></div>
             </div>
             
             <div class="input-section">
@@ -303,7 +316,7 @@
                         <label><i class="fas fa-weight-hanging"></i> Масса планеты (M)</label>
                         <div class="input-row">
                             <input type="number" id="mass-mantissa-ext" step="any" placeholder="Мантисса" value="5.972">
-                            <span style="color: var(--text-secondary);">×10</span>
+                            <span class="times-ten">×10</span>
                             <input type="number" id="mass-exponent-ext" class="exp-input" placeholder="Степень" value="24">
                             <span class="unit">кг</span>
                         </div>
@@ -313,6 +326,7 @@
                         <label><i class="fas fa-ruler"></i> Средний радиус (R)</label>
                         <div class="input-row">
                             <input type="number" id="radius-mantissa-ext" step="any" placeholder="Мантисса" value="6371">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="radius-exponent-ext" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">км</span>
                         </div>
@@ -322,7 +336,7 @@
                         <label><i class="fas fa-sun"></i> Расстояние до Солнца (a)</label>
                         <div class="input-row">
                             <input type="number" id="distance-mantissa-ext" step="any" placeholder="Мантисса" value="1.496">
-                            <span style="color: var(--text-secondary);">×10</span>
+                            <span class="times-ten">×10</span>
                             <input type="number" id="distance-exponent-ext" class="exp-input" placeholder="Степень" value="11">
                             <span class="unit">м</span>
                         </div>
@@ -332,6 +346,7 @@
                         <label><i class="fas fa-tachometer-alt"></i> Орбитальная скорость (v₀)</label>
                         <div class="input-row">
                             <input type="number" id="velocity-mantissa-ext" step="any" placeholder="Мантисса" value="29.8">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="velocity-exponent-ext" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">км/с</span>
                         </div>
@@ -341,6 +356,7 @@
                         <label><i class="fas fa-calendar-alt"></i> Орбитальный период (T)</label>
                         <div class="input-row">
                             <input type="number" id="period-mantissa-ext" step="any" placeholder="Мантисса" value="365.2">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="period-exponent-ext" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">дней</span>
                         </div>
@@ -360,14 +376,14 @@
             
             <div class="results-section">
                 <h2 class="section-title"><i class="fas fa-chart-line"></i> Результаты расчётов</h2>
-                <div class="results-grid" id="results-extended">
-                </div>
+                <div class="results-grid" id="results-extended"></div>
             </div>
         </div>
-                <div id="inverse-mode" class="mode-content">
+        
+        <div id="inverse-mode" class="mode-content">
             <div class="input-section">
                 <h2 class="section-title"><i class="fas fa-calculator"></i>Поиск неизвестного</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                <p style="color: #90a4ae; margin-bottom: 20px;">
                     Введите известные параметры, оставьте пустым поле искомого параметра, и калькулятор вычислит его.
                 </p>
                 
@@ -376,11 +392,9 @@
                         <label>Плотность (ρ)</label>
                         <div class="input-row">
                             <input type="number" id="density-mantissa" step="any" placeholder="Мантисса">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="density-exponent" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">кг/м³</span>
-                        </div>
-                        <div style="font-size: 0.85em; color: var(--text-secondary);">
-                            
                         </div>
                     </div>
                     
@@ -388,7 +402,7 @@
                         <label>Масса (M)</label>
                         <div class="input-row">
                             <input type="number" id="inverse-mass-mantissa" step="any" placeholder="Мантисса">
-                            <span style="color: var(--text-secondary);">×10</span>
+                            <span class="times-ten">×10</span>
                             <input type="number" id="inverse-mass-exponent" class="exp-input" placeholder="Степень">
                             <span class="unit">кг</span>
                         </div>
@@ -398,6 +412,7 @@
                         <label>Радиус (R)</label>
                         <div class="input-row">
                             <input type="number" id="inverse-radius-mantissa" step="any" placeholder="Мантисса">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="inverse-radius-exponent" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">км</span>
                         </div>
@@ -407,11 +422,9 @@
                         <label>Гравитация (g)</label>
                         <div class="input-row">
                             <input type="number" id="gravity-mantissa" step="any" placeholder="Мантисса">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="gravity-exponent" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">м/с²</span>
-                        </div>
-                        <div style="font-size: 0.85em; color: var(--text-secondary);">
-                            
                         </div>
                     </div>
                     
@@ -419,11 +432,9 @@
                         <label>Орбитальный период (T)</label>
                         <div class="input-row">
                             <input type="number" id="inverse-period-mantissa" step="any" placeholder="Мантисса">
+                            <span class="times-ten">×10</span>
                             <input type="number" id="inverse-period-exponent" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">дней</span>
-                        </div>
-                        <div style="font-size: 0.85em; color: var(--text-secondary);">
-                            
                         </div>
                     </div>
                     
@@ -431,7 +442,7 @@
                         <label>Большая полуось (a)</label>
                         <div class="input-row">
                             <input type="number" id="semi-major-mantissa" step="any" placeholder="Мантисса">
-                            <span style="color: var(--text-secondary);">×10</span>
+                            <span class="times-ten">×10</span>
                             <input type="number" id="semi-major-exponent" class="exp-input" placeholder="Степень" value="0">
                             <span class="unit">м</span>
                         </div>
@@ -452,9 +463,8 @@
             
             <div class="results-section">
                 <h2 class="section-title"><i class="fas fa-check-circle"></i> Результат расчёта</h2>
-                <div id="inverse-result" style="background-color: var(--bg-primary); padding: 25px; border-radius: 10px; border-left: 5px solid var(--accent-green);">
-                    
-                    <div id="inverse-result-content" style="font-size: 1.3em; color: var(--text-primary); font-weight: 600;">
+                <div id="inverse-result" style="background-color: #252525; padding: 25px; border-radius: 10px; border-left: 5px solid #4fc3f7;">
+                    <div id="inverse-result-content" style="font-size: 1.3em; color: #e0e0e0; font-weight: 600;">
                         Введите данные и нажмите "Найти неизвестный параметр"
                     </div>
                 </div>
@@ -463,14 +473,12 @@
     </div>
 
     <script>
-        // ==================== КОНСТАНТЫ ====================
         const G = 6.67430e-11;           
         const SUN_MASS = 1.989e30;       
         const PI = Math.PI;
         const AU = 1.496e11;        
         const DAY_SECONDS = 86400;       
         
-        // ==================== УТИЛИТЫ ====================
         function getNumber(mantissaId, exponentId) {
             const mantissa = parseFloat(document.getElementById(mantissaId).value);
             const exponent = parseInt(document.getElementById(exponentId).value) || 0;
@@ -498,7 +506,6 @@
             setTimeout(() => { errorElement.style.display = 'none'; }, 5000);
         }
         
-        // ==================== ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ ====================
         function switchMode(mode) {
             document.querySelectorAll('.mode-content').forEach(el => {
                 el.classList.remove('active');
@@ -515,7 +522,6 @@
             }
         }
         
-        // ==================== ПРЕСЕТЫ ПЛАНЕТ ====================
         const planetPresets = [
             { name: "Меркурий", mass: 0.330, massExp: 24, radius: 2439.4, radiusExp: 0, 
               distance: 57.9, distanceExp: 9, velocity: 47.9, velocityExp: 0, period: 88.0, periodExp: 0,
@@ -578,10 +584,8 @@
             document.getElementById('velocity-exponent-ext').value = planet.velocityExp;
             document.getElementById('period-mantissa-ext').value = planet.period;
             document.getElementById('period-exponent-ext').value = planet.periodExp;
-                        
         }
         
-        // ==================== РАСШИРЕННЫЙ РЕЖИМ ====================
         function calculateExtended() {
             const planetName = document.getElementById('planet-name-ext').value.trim() || "Планета";
             const mass = getNumber('mass-mantissa-ext', 'mass-exponent-ext');
@@ -597,7 +601,6 @@
             
             const radius = radiusKm * 1000;
             
-            // ОСНОВНЫЕ ВЫЧИСЛЕНИЯ
             const g = G * mass / Math.pow(radius, 2);
             const v1 = Math.sqrt(G * mass / radius);
             const v2 = Math.sqrt(2) * v1;
@@ -635,7 +638,7 @@
         }
         
         function displayResults(mode, planetName, results) {
-            const container = document.getElementById(mode === 'extended' ? 'results-extended' : 'results-lite');
+            const container = document.getElementById('results-extended');
             let html = '';
             
             results.forEach((item, index) => {
@@ -648,14 +651,12 @@
                         </div>
                         <div class="result-value">${value}</div>
                         <div class="result-unit">${item.unit || ''}</div>
-                        ${item.formula ? `<div style="font-size: 0.8em; color: var(--text-secondary); margin-top: 8px;">${item.formula}</div>` : ''}
+                        ${item.formula ? `<div style="font-size: 0.8em; color: #90a4ae; margin-top: 8px;">${item.formula}</div>` : ''}
                     </div>
                 `;
             });
             
             container.innerHTML = html;
-            const title = container.closest('.results-section').querySelector('.section-title');
-            title.innerHTML = `<i class="fas fa-chart-line"></i> Результаты для "${planetName}"`;
         }
         
         function clearExtendedForm() {
@@ -674,47 +675,6 @@
             document.getElementById('results-extended').innerHTML = '';
         }
         
-        // ==================== ОБЫЧНЫЙ РЕЖИМ ====================
-        function calculateLite() {
-            const planetName = document.getElementById('planet-name-lite').value.trim() || "Планета";
-            const mass = getNumber('mass-mantissa-lite', 'mass-exponent-lite');
-            const radiusKm = getNumber('radius-mantissa-lite', 'radius-exponent-lite');
-            const distance = getNumber('distance-mantissa-lite', 'distance-exponent-lite');
-            
-            if (isNaN(mass) || isNaN(radiusKm) || isNaN(distance)) {
-                showError('lite', 'Заполните все обязательные поля: масса, радиус, расстояние');
-                return;
-            }
-            
-            const radius = radiusKm * 1000;
-            const g = G * mass / Math.pow(radius, 2);
-            const v1 = Math.sqrt(G * mass / radius);
-            const T = 2 * PI * Math.sqrt(Math.pow(distance, 3) / (G * SUN_MASS));
-            const vOrbit = Math.sqrt(G * SUN_MASS / distance);
-            const FSun = G * mass * SUN_MASS / Math.pow(distance, 2);
-            
-            const results = [
-                { label: "Ускорение свободного падения", value: g, unit: "м/с²" },
-                { label: "Первая космическая скорость", value: v1, unit: "м/с" },
-                { label: "Орбитальный период", value: T / DAY_SECONDS, unit: "дней" },
-                { label: "Орбитальная скорость", value: vOrbit, unit: "м/с" },
-                { label: "Сила притяжения к Солнцу", value: FSun, unit: "Н" }
-            ];
-            
-            displayResults('lite', planetName, results);
-        }
-        
-        function loadEarthLite() {
-            document.getElementById('planet-name-lite').value = 'Земля';
-            document.getElementById('mass-mantissa-lite').value = '5.972';
-            document.getElementById('mass-exponent-lite').value = '24';
-            document.getElementById('radius-mantissa-lite').value = '6371';
-            document.getElementById('radius-exponent-lite').value = '0';
-            document.getElementById('distance-mantissa-lite').value = '1.496';
-            document.getElementById('distance-exponent-lite').value = '11';
-        }
-        
-        // ==================== РАСЧЁТ ====================
         function calculateInverse() {
             const density = getNumber('density-mantissa', 'density-exponent');
             const mass = getNumber('inverse-mass-mantissa', 'inverse-mass-exponent');
@@ -729,33 +689,28 @@
             if (isNaN(density) && !isNaN(mass) && !isNaN(radius)) {
                 const volume = (4/3) * PI * Math.pow(radius, 3);
                 const calculatedDensity = mass / volume;
-                result = `Плотность планеты: <strong>${formatNumber(calculatedDensity)} кг/м³</strong><br>
-                          `;
+                result = `Плотность планеты: <strong>${formatNumber(calculatedDensity)} кг/м³</strong><br>`;
                 foundParam = 'плотность';
             }
             else if (isNaN(mass) && !isNaN(gravity) && !isNaN(radius)) {
                 const calculatedMass = gravity * Math.pow(radius, 2) / G;
-                result = `Масса планеты: <strong>${formatNumber(calculatedMass)} кг</strong><br>
-                          `;
+                result = `Масса планеты: <strong>${formatNumber(calculatedMass)} кг</strong><br>`;
                 foundParam = 'масса';
             }
             else if (isNaN(radiusKm) && !isNaN(mass) && !isNaN(density)) {
                 const calculatedRadius = Math.pow(3 * mass / (4 * PI * density), 1/3);
-                result = `Радиус планеты: <strong>${formatNumber(calculatedRadius / 1000)} км</strong><br>
-                          `;
+                result = `Радиус планеты: <strong>${formatNumber(calculatedRadius / 1000)} км</strong><br>`;
                 foundParam = 'радиус';
             }
             else if (isNaN(semiMajor) && !isNaN(periodDays)) {
                 const periodSeconds = periodDays * DAY_SECONDS;
                 const calculatedSemiMajor = Math.pow(Math.pow(periodSeconds, 2) * G * SUN_MASS / (4 * Math.pow(PI, 2)), 1/3);
-                result = `Большая полуось орбиты: <strong>${formatNumber(calculatedSemiMajor)} м</strong><br>
-                          `;
+                result = `Большая полуось орбиты: <strong>${formatNumber(calculatedSemiMajor)} м</strong><br>`;
                 foundParam = 'большую полуось орбиты';
             }
             else if (isNaN(periodDays) && !isNaN(semiMajor)) {
                 const calculatedPeriod = 2 * PI * Math.sqrt(Math.pow(semiMajor, 3) / (G * SUN_MASS));
-                result = `Орбитальный период: <strong>${formatNumber(calculatedPeriod / DAY_SECONDS)} дней</strong><br>
-                          `;
+                result = `Орбитальный период: <strong>${formatNumber(calculatedPeriod / DAY_SECONDS)} дней</strong><br>`;
                 foundParam = 'орбитальный период';
             }
             else {
@@ -785,17 +740,14 @@
                 'Введите данные и нажмите "Найти неизвестный параметр"';
         }
         
-        // ==================== ИНИЦИАЛИЗАЦИЯ ====================
         document.addEventListener('DOMContentLoaded', function() {
             loadPresets();
-            loadEarthLite();      
             loadPreset(planetPresets[2]);
             document.querySelectorAll('input').forEach(input => {
                 input.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         const activeMode = document.querySelector('.mode-content.active').id;
                         if (activeMode === 'extended-mode') calculateExtended();
-                        else if (activeMode === 'lite-mode') calculateLite();
                         else if (activeMode === 'inverse-mode') calculateInverse();
                     }
                 });
